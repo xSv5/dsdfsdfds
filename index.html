@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Container with Side Navigation</title>
+    <!-- Link to Comfortaa font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Include the particles.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
+
+    <style>
+        /* Set up the page layout */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: 'Comfortaa', sans-serif;
+        }
+
+        /* The container itself */
+        .container {
+            background-color: #0d0d0d;  /* Same background for side nav and content */
+            border-radius: 0px;
+            width: 400px;  /* Width of the container */
+            height: 220px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;  /* Use flex to arrange the side nav and content side by side */
+            position: relative;  /* Allow the top bar to span over the entire container */
+        }
+
+        /* The purple bar at the top */
+        .top-bar {
+            background-color: purple;
+            height: 0px; /* Adjust height of the bar */
+            width: 100%; /* Full width of the container */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it's above the background but below side-nav and content */
+        }
+
+        /* Side navigation inside the container */
+        .side-nav {
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;  /* Centers items vertically */
+            padding: 20px 0;
+            position: relative;  /* Keep the side nav above the background */
+            margin-top: 10px;  /* Adjust to move the side nav below the top bar */
+            z-index: 10; /* Keep side nav above the background */
+        }
+
+        /* Style for icons inside side-nav */
+        .side-nav i {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        /* Horizontal rule with a slightly lighter color than the background */
+        .side-nav hr {
+            width: 40px;
+            border: 0;
+            border-top: 1px solid #555;
+            margin: 10px auto;  /* Centers the hr horizontally */
+        }
+
+        /* The content inside the container */
+        .content {
+            flex-grow: 1;  /* Take up the remaining space */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 10;  /* Ensure content stays above the particles */
+        }
+
+        /* The particles container */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;  /* Place particles behind the content */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The container with particles -->
+    <div class="container">
+        <!-- Particles container -->
+        <div id="particles-js"></div>
+
+        <!-- Purple bar at the top of the container -->
+        <div class="top-bar"></div>
+
+        <!-- Side navigation inside the container -->
+        <div class="side-nav">
+            <i class="fas fa-home"></i>
+            <hr>
+            <i class="fas fa-cog"></i>
+            <hr>
+            <i class="fa-brands fa-discord"></i>
+            <hr>
+            <i class="fas fa-info-circle"></i>
+        </div>
+
+        <!-- Main content inside the container -->
+        <div class="content">
+            <p>This is the content inside the container.</p>
+        </div>
+    </div>
+
+    <!-- Initialize particles.js -->
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#ffffff"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 4,
+                        size_min: 0.3,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+
+</body>
+</html>
